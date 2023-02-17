@@ -1,6 +1,5 @@
 import { useState, useEffect, useReducer } from 'react';
 import toast from 'react-hot-toast';
-import { staticResponse } from 'Utils/StaticData';
 import TextFields from 'Components/TextFields';
 import DropdownFields from 'Components/DropdownFields';
 import './_CreationForm.scss';
@@ -63,17 +62,14 @@ function CreationForm() {
     }
 
     useEffect(() => {
-        // fetch(API_URL)
-        //     .then((res) => handleError(res))
-        //     .then((data) => {
-        //         for(const key of Object.keys(data)) {
-        //             key === 'occupations' ? setOccupationList(data[key]) : setStateList(data[key]);
-        //         }
-        //     });
-        //     .catch(console.error);
-        for(const key of Object.keys(staticResponse)) {
-            key === 'occupations' ? setOccupationList(staticResponse[key]) : setStateList(staticResponse[key]);
-        }
+        fetch(API_URL)
+            .then((res) => handleError(res))
+            .then((data) => {
+                for(const key of Object.keys(data)) {
+                    key === 'occupations' ? setOccupationList(data[key]) : setStateList(data[key]);
+                }
+            })
+            .catch(console.error);
     }, []);
 
     function validateFormInput() {
@@ -99,19 +95,19 @@ function CreationForm() {
             event.preventDefault();
             const valid = validateFormInput();
             if(valid) {
-                // fetch(API_URL, {
-                //     method: 'POST',
-                //     headers: {
-                //         'Content-Type': 'application/json'
-                //     },
-                //     body: JSON.stringify(state)
-                // })
-                // .then((res) => handleError(res))
-                // .then(() => {
-                //     toast.success('Form successfully submitted!');
-                //     dispatch({type: 'reset_state'});
-                // })
-                // .catch(console.error);
+                fetch(API_URL, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body: JSON.stringify(state)
+                })
+                .then((res) => handleError(res))
+                .then(() => {
+                    toast.success('Form successfully submitted!');
+                    dispatch({type: 'reset_state'});
+                })
+                .catch(console.error);
             }
         }
 

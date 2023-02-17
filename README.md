@@ -16,5 +16,7 @@ Will install all necessary dependencies for the project
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 
+### Note:
+All relevant code can be found in src/Components & src/Utils
 
 Thanks!
