@@ -1,4 +1,4 @@
-import { dropdownFieldStructure } from "../../Utils/FormStructure";
+import { dropdownFieldStructure } from "Utils/FormStructure";
 
 function DropdownFields(props) {
     const { dispatch, currState, occupationList, stateList } = props;

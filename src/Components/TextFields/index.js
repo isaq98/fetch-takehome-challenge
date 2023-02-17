@@ -1,4 +1,4 @@
-import { textFieldStructure } from "../../Utils/FormStructure";
+import { textFieldStructure } from "Utils/FormStructure";
 
 function TextFields(props) {
     const { dispatch, currState } = props;
